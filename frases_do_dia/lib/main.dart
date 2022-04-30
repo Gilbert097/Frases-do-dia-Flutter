@@ -1,3 +1,4 @@
+import 'dart:math';
 import 'package:flutter/material.dart';
 
 void main(){
@@ -15,6 +16,24 @@ class HomeStatefulWidget extends StatefulWidget {
 }
 
 class _HomeStatefulWidgetState extends State<HomeStatefulWidget> {
+
+  final _phrases = [
+    "Trabalha como se vivesses para sempre. Ama como se fosses morrer hoje.",
+    "Não vivemos para comer, mas comemos para viver.",
+    "Viver significa lutar.",
+    "Dedica-se a esperar o futuro apenas quem não sabe viver o presente.",
+    "Aquele que vive de combater um inimigo tem interesse em o deixar com vida."
+  ];
+
+  var _currentPhrase = "Clique abaixo para gerar uma frase!";
+
+  void _generatePhrase(){
+    var index = Random().nextInt(_phrases.length);
+    setState(() {
+      _currentPhrase = _phrases[index];
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,19 +51,17 @@ class _HomeStatefulWidgetState extends State<HomeStatefulWidget> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget> [
             Image.asset("images/logo.png"),
-            const Text(
-              "Clique abaixo para gerar uma frase!",
+             Text(
+              _currentPhrase,
               textAlign: TextAlign.justify,
-              style: TextStyle(
+              style: const TextStyle(
                   fontSize: 25,
                   fontStyle: FontStyle.italic,
                   color: Colors.black
               ),
             ),
             ElevatedButton(
-              onPressed: (){
-                print("Clicou");
-              },
+              onPressed: _generatePhrase,
               child: const Text(
                 "Nova Frase",
                 style: TextStyle(
