@@ -1,9 +1,9 @@
- import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 
 void main(){
   runApp(const MaterialApp(
-    debugShowCheckedModeBanner: false,
-    home: HomeStatefulWidget()
+      debugShowCheckedModeBanner: false,
+      home: HomeStatefulWidget()
   ));
 }
 
@@ -23,35 +23,43 @@ class _HomeStatefulWidgetState extends State<HomeStatefulWidget> {
         backgroundColor: Colors.green,
       ),
       body: Container(
-        decoration: BoxDecoration(
+        /*decoration: BoxDecoration(
           border: Border.all(width: 3, color: Colors.amber)
-        ),
+        ),*/
+        width: double.infinity,
         padding: const EdgeInsets.all(16),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget> [
             Image.asset("images/logo.png"),
             const Text(
-                "Clique abaixo para gerar uma frase!",
+              "Clique abaixo para gerar uma frase!",
               textAlign: TextAlign.justify,
               style: TextStyle(
-                fontSize: 17,
-                fontStyle: FontStyle.italic,
-                color: Colors.black
+                  fontSize: 25,
+                  fontStyle: FontStyle.italic,
+                  color: Colors.black
               ),
             ),
-             ElevatedButton(
-                onPressed: (){
-                  print("Clicou");
-                },
-                child: const Text("Nova Frase"),
-               style: ButtonStyle(
-                 backgroundColor: MaterialStateProperty.all(Colors.green)
-               ),
+            ElevatedButton(
+              onPressed: (){
+                print("Clicou");
+              },
+              child: const Text(
+                "Nova Frase",
+                style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold
+                ),
+              ),
+              style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(Colors.green)
+              ),
             )
           ],
         ),
       ),
-      bottomNavigationBar: const BottomAppBar(),
     );
   }
 }
